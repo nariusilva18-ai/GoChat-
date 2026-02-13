@@ -1,0 +1,108 @@
+{
+  "name": "GoChat - Rede Social",
+  "short_name": "GoChat",
+  "description": "Conecte-se com pessoas incríveis. Chat, lives e matching com IA.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color":="#0f172a",
+  "theme_color":="#06b6d4",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "pt-BR",
+  "categories": ["social", "communication", "entertainment"],
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/home.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshots/chat.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=app.gochat",
+      "id": "app.gochat"
+    }
+  ],
+  "prefer_related_applications": true,
+  "shortcuts": [
+    {
+      "name": "Mensagens",
+      "short_name": "Chat",
+      "description": "Abrir mensagens",
+      "url": "/chat",
+      "icons": [{ "src": "/icons/chat.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Lives",
+      "short_name": "Lives",
+      "description": "Ver lives ao vivo",
+      "url": "/lives",
+      "icons": [{ "src": "/icons/live.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Matching",
+      "short_name": "Match",
+      "description": "Encontrar pessoas",
+      "url": "/matching",
+      "icons": [{ "src": "/icons/match.png", "sizes": "96x96" }]
+    }
+  ]
+}

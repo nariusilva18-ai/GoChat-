@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#06b6d4" />
+    <meta name="background-color" content="#0f172a" />
+    <meta name="description" content="GoChat - Conecte-se com pessoas incríveis. Chat, lives e matching com IA." />
+    <meta name="keywords" content="chat, rede social, live, streaming, matching, dating, amizade" />
+    <meta name="author" content="GoChat Team" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="GoChat" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="GoChat" />
+    <meta name="msapplication-TileColor" content="#06b6d4" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="GoChat - Rede Social" />
+    <meta property="og:description" content="Conecte-se com pessoas incríveis. Chat, lives e matching com IA." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gochat.app" />
+    <meta property="og:image" content="./icons/icon-512x512.png" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GoChat - Rede Social" />
+    <meta name="twitter:description" content="Conecte-se com pessoas incríveis. Chat, lives e matching com IA." />
+    <meta name="twitter:image" content="./icons/icon-512x512.png" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-72x72.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./icons/icon-72x72.png" />
+    <link rel="shortcut icon" href="./icons/icon-72x72.png" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="72x72" href="./icons/icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="96x96" href="./icons/icon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="128x128" href="./icons/icon-128x128.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="./icons/icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="./icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="384x384" href="./icons/icon-384x384.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="./icons/icon-512x512.png" />
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="./manifest.json" />
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://api.gochat.app" />
+    <link rel="dns-prefetch" href="https://api.gochat.app" />
+    
+    <title>GoChat - Rede Social</title>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('[PWA] Service Worker registered:', registration.scope);
+              
+              // Check for updates
+              registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    // New version available
+                    if (confirm('Nova versão disponível! Deseja atualizar?')) {
+                      newWorker.postMessage({ type: 'SKIP_WAITING' });
+                      window.location.reload();
+                    }
+                  }
+                });
+              });
+            })
+            .catch((error) => {
+              console.log('[PWA] Service Worker registration failed:', error);
+            });
+        });
+        
+        // Listen for messages from service worker
+        navigator.serviceWorker.addEventListener('message', (event) => {
+          if (event.data.type === 'RELOAD') {
+            window.location.reload();
+          }
+        });
+      }
+      
+      // Install prompt
+      let deferredPrompt;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        console.log('[PWA] Install prompt available');
+      });
+      
+      // Check if app is installed
+      window.addEventListener('appinstalled', () => {
+        console.log('[PWA] App installed');
+        deferredPrompt = null;
+      });
+    </script>
+    
+    <style>
+      /* Critical CSS for loading state */
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+      }
+      
+      #root {
+        height: 100%;
+        width: 100%;
+      }
+      
+      /* Loading spinner */
+      .loading-spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-5TXm1Hbc.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DsYqjsOg.css">
+  </head>
+  <body>
+    <div id="root">
+      <div class="loading-spinner"></div>
+    </div>
+  </body>
+</html>
